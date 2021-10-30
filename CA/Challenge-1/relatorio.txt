@@ -1,0 +1,40 @@
+How to run example:
+
+python3 decrypt.py texts/1.txt pt texts/result.txt # Portuguese
+
+python3 decrypt.py texts/5.txt eng texts/result.txt # English
+
+---------------
+
+This program cracks a vigenere cipther encrypted text with no known key.
+It discovers the original key and the decrypted text.
+For this we use 3 main functions:
+    - FindKeyLength
+    - FindKey
+    - Decrypt
+
+The FindKeyLength function compares the encrypted text with itself multiple times, removing each time the first letter.
+These comparisons allow us to find the same letters in both texts in the same position, and a pattern will start to form.
+There is going to be a high number of coincidences that are the same distance apart, this is the aproximate key length.
+
+The FindKey divides the encrypted text in groups (that are as many as the key length) and then, for each group, the most common letter is found.
+This most common lettter in the english dictionary is E, and for that reason, the most common letter in each group is probably an E.
+We use the matrix to find the correspondent row to the column E and with the most common letter in each group, find the real key.
+For the portuguese language the same applies, but the most common letter is an A, so the most common letters correspond to the key.
+
+The Decrypt method uses the found key and the encrypted text to decrypt it.
+
+
+---------------
+
+1.txt -> Farsa, Raul Brandão | key: thequickbro
+
+2.txt -> O Retrato de Ricardina, Camilo Castelo | key: wnfoxjumpsvrthl
+
+3.txt -> Esteiros Soeiro, Pereira Gomes | key: azydogthequi
+
+4.txt -> Eureka, Edgar Allan Poe | key: thequickbro
+
+5.txt -> The Cask of Amontillado, Edgar Allan Poe | key: wnfoxjumpskrthl
+
+6.txt -> The Pit and the Pendulum, Edgar Allan Poe | key: azydogthequi
