@@ -1,0 +1,5 @@
+Package: wget
+Maintainer: Debian
+Version: 1.30.3-1ubuntu1
+Architecture: amd64
+Description: Debian

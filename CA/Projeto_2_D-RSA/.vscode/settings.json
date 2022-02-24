@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "pem.h": "c",
+        "rand.h": "c"
+    }
+}

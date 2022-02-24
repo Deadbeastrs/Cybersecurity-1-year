@@ -1,0 +1,15 @@
+Important:
+
+Fix the product button on the website
+Fix vulnerability #293
+Fix cart not updating correctly sometimes
+
+SemiImportant:
+
+Correct the colors in the customer_registration.php
+Add new products to website
+
+NotImportant:
+
+Update the shopping cart automatically
+Add multiple items to cart on index.php

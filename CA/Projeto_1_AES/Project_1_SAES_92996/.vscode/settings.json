@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "aes.h": "c",
+        "pkcs7_padding.h": "c",
+        "crypto.h": "c",
+        "evp.h": "c",
+        "encrypt.h": "c",
+        "decrypt.h": "c",
+        "cstddef": "cpp",
+        "cstdio": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "string.h": "c",
+        "aes_ni.h": "c",
+        "speed_tools.h": "c",
+        "rand.h": "c"
+    }
+}
