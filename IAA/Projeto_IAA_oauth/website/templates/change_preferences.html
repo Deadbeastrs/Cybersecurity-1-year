@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/styleLogin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Change Preferences</title>
+</head>
+<body>
+    <div class="card">
+        <div class="img-container"></div>
+
+        <div class="welcome">
+            <div class="oblique"></div>
+            <p style="background-color: #3C5DBC;">Password</p>
+        </div>
+
+        <form action="/rm/preferences" method="post">
+            <div class="form-control">
+                <label for="password">New Password</label>
+                <input type="password" id="password" name="password">
+                <div class="focused-line"></div>
+            </div>
+            <button id="submit" class="submit" style="background-color: #3C5DBC;">Save</button>
+        </form>
+    </div>
+    
+</body>
+
+<script>
+    
+</script>
+
+</html>

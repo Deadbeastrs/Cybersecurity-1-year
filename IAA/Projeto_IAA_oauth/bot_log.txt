@@ -1,0 +1,4 @@
+player2 draw at checkers
+player6 cheating at checkers
+player8 lost at checkers
+player16 win at checkers

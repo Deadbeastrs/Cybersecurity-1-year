@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/styleLogin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Register</title>
+</head>
+<body>
+    <div class="card">
+        <div class="img-container"></div>
+
+        <div class="welcome">
+            <div class="oblique"></div>
+            <p>Register</p>
+        </div>
+
+        <form action="/rm/register_cmd" method="post">
+            <div class="form-control">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <div class="focused-line"></div>
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <div class="focused-line"></div>
+            </div>
+            <button id="submit" class="submit">Register</button>
+
+        </form>
+    </div>
+    
+</body>
+
+<script>
+    
+</script>
+
+</html>

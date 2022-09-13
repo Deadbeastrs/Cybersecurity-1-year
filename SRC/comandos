@@ -1,0 +1,47 @@
+# EX1
+
+## FW 1
+
+configure
+set system host-name FW1
+set interfaces ethernet eth0 address 200.1.1.1/24
+set interfaces ethernet eth2 address 10.1.1.1/24
+set interfaces ethernet eth5 address 10.0.0.1/24
+set protocols static route 0.0.0.0/0 next-hop 200.1.1.10
+set protocols static route 10.2.2.0/24 next-hop 10.1.1.10
+commit
+
+set nat source rule 10 outbound-interface eth0
+set nat source rule 10 source address 10.0.0.0/8
+set nat source rule 10 translation address 192.1.0.1-192.1.0.10
+commit
+
+set high-availability vrrp group FWCluster vrid 10
+set high-availability vrrp group FWCluster interface eth5
+set high-availability vrrp group FWCluster virtual-address 192.168.100.1/24
+set high-availability vrrp sync-group FWCluster member FWCluster
+set high-availability vrrp group FWCluster rfc3768-compatibility
+commit
+
+## FW 2
+
+configure
+set system host-name FW2
+set interfaces ethernet eth0 address 200.1.1.2/24
+set interfaces ethernet eth2 address 10.1.1.2/24
+set interfaces ethernet eth5 address 10.0.0.2/24
+set protocols static route 0.0.0.0/0 next-hop 200.1.1.10
+set protocols static route 10.2.2.0/24 next-hop 10.1.1.10
+commit
+
+set nat source rule 10 outbound-interface eth0
+set nat source rule 10 source address 10.0.0.0/8
+set nat source rule 10 translation address 192.1.0.1-192.1.0.10
+commit
+
+set high-availability vrrp group FWCluster vrid 10
+set high-availability vrrp group FWCluster interface eth5
+set high-availability vrrp group FWCluster virtual-address 192.168.100.1/24
+set high-availability vrrp sync-group FWCluster member FWCluster
+set high-availability vrrp group FWCluster rfc3768-compatibility
+commit

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/style/styleGames.css">
+    <title>Game Selection</title>
+</head>
+<body>
+    <div id="definition">
+    
+        <img src="./static/images/Settings-icon.png" width="70px" height="70px" onclick="openForm()">
+        
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-image">
+                <img src="./static/images/x.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Chess</span>
+                <h2>Chess</h2>
+                <p>Required Players: 2<br>Individual Game</p>     
+            </div>
+
+            <div class="card-footer">
+                <div class="info">      
+                </div>
+            </div>
+            <div class="selector">
+                <form>
+                    <div class="form-control">
+                        
+                        <input type="text" id="tagchess"  placeholder="gamer tag">
+                        
+                    </div>
+                    <button type="button" onclick="startGame('chess')">Play!</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image">
+                <img src="./static/images/c.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Checkers</span>
+                <h2>Checkers</h2>
+                <p>Required Players: 2<br>Individual Game</p>
+            </div>
+
+            <div class="card-footer">
+                <div class="info">
+                    
+                </div>
+                
+            </div>
+            <div class="selector">
+                <form>
+                    <div class="form-control">
+                        
+                        <input type="text" id="tagcheckers"  placeholder="gamer tag">
+                        
+                    </div>
+                    <button type="button" onclick="startGame('checkers')">Play!</button>
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="./static/images/s.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Sueca</span>
+                <h2>Sueca</h2>
+                <p>Required Players: 4<br>Teams of 2</p>
+            </div>
+
+            <div class="card-footer">
+                <div class="info">
+                    
+                </div>
+            </div>
+            <div class="selector">
+                <form>
+                    <div class="form-control">
+                        
+                        <input type="text" id="tagsueca"  placeholder="gamer tag">
+                        
+                    </div>
+                    <button type="button" onclick="startGame('sueca')">Play!</button>
+                </form>
+
+            </div>
+            
+        </div>
+        <div class="form-popup" id="myForm">
+            <form class="form-container">
+              <h1 class="power">Preferences</h1>
+          
+              <label for="Skill"><b>Skill</b></label>
+              
+              <select name="Skill" id="skill_preferences">
+                <option value="allS"> All players </option>
+                <option value="higherS"> Higher skill players  </option>
+                <option value="lowerS">Lower skill players</option>
+                
+                
+              </select>
+              <p>&nbsp;</p>
+              <label for="Behavior"><b>Behavior</b></label>
+              
+              <select name="Behavior" id="behavior_preferences">
+                <option value="allB"> All players </option>
+                <option value="higherB">  Higher skill players  </option>
+                <option value="lowerB">Lower skill players</option>
+                
+                
+              </select>
+              <p>&nbsp;</p>
+              <label for="Behavior"><b>Bins</b></label>
+              <select name="Bins" id="bin">
+                <option value="6">6</option>
+                <option value="1"> 1 </option>
+                <option value="2"> 2 </option>
+                <option value="3"> 3 </option>
+                <option value="4"> 4 </option>
+                <option value="5"> 5 </option>
+                <option value="7"> 7 </option>
+                <option value="8"> 8 </option>
+                <option value="9"> 9 </option>
+                <option value="10"> 10 </option>
+                
+              </select>
+              <p>&nbsp;</p>
+          
+              <button type="button" class="btn" onclick="redirect_preferences()" >Change Password</button>
+            </form>
+          </div> 
+
+
+</body>
+<script>
+    window.onload = function() {
+        if (window.location.href.indexOf("username") > -1) {
+            alert("Gamer Tag Already Used");
+        }
+    }
+
+    function startGame(game){
+        if(document.getElementById("tag"+game).value != ""){
+            skill_pref = document.getElementById("skill_preferences").selectedIndex
+            skill_pref_num = skill_pref
+            if(skill_pref == 2){
+                skill_pref_num = -1
+            }
+
+            beh_pref = document.getElementById("behavior_preferences").selectedIndex
+            beh_pref_num = beh_pref
+            if(beh_pref == 2){
+                beh_pref_num = -1
+            }
+            bin_element = document.getElementById("bin")
+            bins = bin_element.options[bin_element.selectedIndex].value
+            window.location.href = "tm/start_game?game="+game+"&username=" + document.getElementById("tag"+game).value + "&skill_pref=" + skill_pref_num + "&behaviour_pref=" + beh_pref_num + "&bins=" + bins
+        }
+    }
+    function openForm() {
+        if (document.getElementById("myForm").style.display == "block"){
+            document.getElementById("myForm").style.display = "none";
+        }
+        else if (document.getElementById("myForm").style.display = "none")
+        {
+            document.getElementById("myForm").style.display = "block";
+        }
+    }
+    function redirect_preferences() {
+        window.location.replace('/rm/preferences?callback='+ window.location.href)
+    }
+    
+</script>
+</html>

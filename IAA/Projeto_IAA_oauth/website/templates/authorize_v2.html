@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/style/styleAuth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Authorize</title>
+</head>
+<body>
+    <div class="card">
+        <div class="img-container"></div>
+
+        <div class="welcome">
+            <div class="oblique"></div>
+            <p>Consent</p>
+        </div>
+
+        <form action="" method="post">
+            <div class="form-control">
+                <p>Logged as: {{user.get_username()}}</p>
+                <br>
+                <label for="title"><b>Authorize TM to get access to :</b> <br> <br></label>
+                <p> - Granulated Skill Rating</p>
+                <p> - Granulated Behaviour Rating</p>
+                <p> - Update Skill Rating</p>
+                <p> - Update Behaviour Rating</p>
+                <br>
+                <div class="img-container2">
+                    <i class="material-icons" style= "font-size: 48px;">assignment </i>    
+                </div>
+            </div>
+            <button class="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agree &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <label for="redirect">Redirect to http://127.0.0.1:5000/tm/callback</label>
+        </form>
+        
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/style/styleResults.css">
+    <title>Results</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-image" id="card-image">
+                <img src="../static/images/loading.png" id="image_result" alt="Character" style="max-width:50%">
+            </div>
+
+            <div class="card-body">
+                <span class="power" id="game"></span>
+                <h2 id="result">Waiting</h2>
+                <p id="name"></p>
+            </div>
+
+            <div class="card-footer" id="footer">
+                <div class="info">      
+                </div>
+            </div>
+            <div class="selector" id="go_back" style="display:none">
+                <a href="/">
+                    <button id="button_back">Go back</button>
+                </a>
+            </div>
+        </div>
+</body>
+<script>
+    my_username = "{{username}}"
+    window.onload = function() {
+        if("{{state}}" == "True"){
+            change_result("{{username}}",decodeHtml("{{result}}"),"{{game}}");
+        }
+        socket = io.connect('http://127.0.0.1:5000');
+        
+        socket.on("{{ room }}", (result,game) => {   
+            change_result(my_username,decodeHtml(result),game);
+            socket.disconnect();
+        });
+    };
+    
+    function decodeHtml(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+
+    
+    function change_result(username, result, game_name) {
+        var background = document.getElementById("card-image");
+        var go_back = document.getElementById("go_back");
+        go_back.style.removeProperty('display');
+        result_parse = JSON.parse(result);
+        var win_lose = result_parse[username];
+        
+
+        var image = document.getElementById("image_result");
+        var result = document.getElementById("result");
+        var name = document.getElementById("name");
+        var game =  document.getElementById("game");
+        var footer =  document.getElementById("footer");
+        var button_back =  document.getElementById("button_back");
+
+        image.style.removeProperty('max-width');
+
+        if(win_lose == "win"){
+            
+            game.textContent  = game_name;
+            result.innerHTML = "Win";
+            name.innerHTML = username;
+            image.src = "../static/images/win.png";
+            background.style.background= "url('../static/images/bk1.jpg')";
+            footer.style.background = "#4891ba";
+            button_back.style.backgroundColor = "#4891ba";
+        }
+        else if (win_lose == "lost")
+        {
+            game.textContent  = game_name;
+            result.innerHTML = "Lost";
+            name.innerHTML = username;
+            image.src = "../static/images/lost.png";
+            background.style.background= "url('../static/images/back_lost.jpg')";
+            footer.style.background="#be0000";
+            button_back.style.backgroundColor = "#be0000";
+        }
+
+        else if (win_lose == "draw")
+        {
+            game.textContent  = game_name;
+            result.innerHTML = "Draw";
+            name.innerHTML = username;
+            image.src = "../static/images/draw.png";
+            background.style.background= "url('../static/images/bk2.jpg')";
+            footer.style.background="rgb(252, 186, 3)";
+            button_back.style.backgroundColor = "rgb(252, 186, 3)";
+        }
+        else if (win_lose == "cheating")
+        {
+            game.textContent  = game_name;
+            result.innerHTML = "Cheat";
+            name.innerHTML = username;
+            image.src = "../static/images/lost.png";
+            background.style.background= "url('../static/images/back_lost.jpg')";
+            footer.style.background="#be0000";
+            button_back.style.backgroundColor = "#be0000";
+        }
+        else if (win_lose == "quit")
+        {
+            game.textContent  = game_name;
+            result.innerHTML = "Quit";
+            name.innerHTML = username;
+            image.src = "../static/images/lost.png";
+            background.style.background= "url('../static/images/back_lost.jpg')";
+            footer.style.background="#be0000";
+            button_back.style.backgroundColor = "#be0000";
+        }
+        
+    }
+    
+</script>
+</html>
+
